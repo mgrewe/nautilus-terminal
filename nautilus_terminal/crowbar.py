@@ -11,8 +11,6 @@ class Crowbar(Gtk.EventBox):
         super(Crowbar, self).__init__()
 
         self.uri = uri
-        self.nautilus_window = window
-        self.nautilus_app = window.get_application()
         self.path = helpers.gvfs_uri_to_path(uri)
 
         self.connect_after("parent-set", self._on_parent_set)
