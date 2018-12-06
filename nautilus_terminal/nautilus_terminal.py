@@ -206,15 +206,22 @@ class NautilusTerminal(object):
         self._ui_terminal = Vte.Terminal()
         self._ui_terminal.connect("child-exited", self._on_terminal_child_existed)
         self._ui_vpanel.pack1(self._ui_terminal, resize=False, shrink=False)
+        
+        from gi.repository import Pango
+        font = self._ui_terminal.get_font()
+        font.set_size(self._settings.get_uint("terminal-font-size") * Pango.SCALE)
+        self._ui_terminal.set_font(font)
 
         TERMINAL_CHAR_HEIGHT = self._ui_terminal.get_char_height()
-        TERMINAL_BORDER_WIDTH = 1
+        TERMINAL_BORDER_WIDTH = 2
         TERMINAL_MIN_HEIGHT = self._settings.get_uint("min-terminal-height")
 
+
+        
         self._ui_terminal.set_property(
                 "height-request",
                 TERMINAL_CHAR_HEIGHT * TERMINAL_MIN_HEIGHT + TERMINAL_BORDER_WIDTH * 2)
-
+        
         # File drag & drop support
 
         self._ui_terminal.drag_dest_set(

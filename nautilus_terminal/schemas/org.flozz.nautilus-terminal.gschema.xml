@@ -21,5 +21,9 @@
       <summary>Minimal height of the terminal (in line)</summary>
       <description>Minimal amount of line that will be visible in the terminal. Also the default amount of line visible when opening a new terminal.</description>
     </key>
-  </schema>
+  <key name="terminal-font-size" type="u">
+      <default>10</default>
+      <summary>Font size of the terminal</summary>
+      <description>Specify the font size which is used in the terminal.</description>
+    </key></schema>
 </schemalist>
